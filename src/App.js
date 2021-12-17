@@ -6,7 +6,15 @@ import axios from 'axios';
 import PunkList from "./components/PunkList";
 import Main from "./components/Main";
 
-function App() {
+ function App() {
+  let serverURL;
+
+  fetch("react-nft-challenge/serverless/api.js")
+  .then(response => response.json())
+  .then(json => {
+      serverURL = json.api;
+  })
+
   //we store all of our punks/data in punklistdata which is an empty array, and then it becomes setpunklistdata 
   //useState takes two params first being where to store data second being how to use said data once stored
 const [punkListData, setPunkListData] = useState([])
@@ -40,4 +48,5 @@ const [selectedPunk, setSelectedPunk] = useState(0)
   );
 }
 
-export default App;
+export default App; 
+
